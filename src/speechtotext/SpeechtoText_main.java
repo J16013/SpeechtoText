@@ -15,7 +15,7 @@ public class SpeechtoText_main {
 
 		public static void main(String[] args) {
 		    SpeechToText service = new SpeechToText();
-		    service.setUsernameAndPassword("754db902-e722-4312-a014-b94c61b6668f", "TtdWSbdgOu00");
+		    service.setUsernameAndPassword("J16013", "J16013");
 
 		    File audio = new File("./audio/output.wav");
 		    RecognizeOptions options=null;
