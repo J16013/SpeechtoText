@@ -19,6 +19,9 @@ public class SpeechtoText_main {
 
 		    File audio = new File("./audio/output.wav");
 		    RecognizeOptions options=null;
+
+		    MySQL mysql = new MySQL();
+
 			try {
 				options = new RecognizeOptions.Builder()
 						.model("ja-JP_BroadbandModel")
@@ -34,9 +37,17 @@ public class SpeechtoText_main {
 		    System.out.println(transcript);
 
 		    JsonNode node = null;
+		    String s = String.valueOf(transcript);
 		    ObjectMapper mapper = new ObjectMapper();
 		    try{
-		    	node = mapper.readTree(transcript.toString());
+		    	node = mapper.readTree(s);
+		    	for(int i = 0; i < node.get("results").size(); i++){
+		    		String text = node.get("results").get(i).get("alternatives").get(0).get("transcript").toString();
+		    		double confidence = node.get("results").get(i).get("alternatives").get(0).get("confidence").asDouble();
+		    		System.out.println("transcript:"+text);
+		 			System.out.println("confidence:"+confidence);
+			    	mysql.updateImage(text, confidence);
+		    	}
 		    }catch(IOException e){
 		    	e.printStackTrace();
 		    }
@@ -45,6 +56,8 @@ public class SpeechtoText_main {
 		    double Confidence = node.get("results").get(0).get("alternatives").get(0).get("confidence").asDouble();
 		    System.out.println("transcript:"+Transcript);
 			System.out.println("confidence:"+Confidence);
+
+
 		  }
 	}
 
