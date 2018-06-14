@@ -8,7 +8,8 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MySQL {String driver;// JDBCドライバの登録
+public class MySQL {
+String driver;// JDBCドライバの登録
 String server, dbname, url, user, password;// データベースの指定
 Connection con;
 Statement stmt;
