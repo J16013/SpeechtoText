@@ -14,7 +14,7 @@ public class SpeechtoText_lib {
 
     public SpeechtoText_lib(File audio){
     	service = new SpeechToText();
-	    service.setUsernameAndPassword("J16013", "J16013");
+	    service.setUsernameAndPassword("754db902-e722-4312-a014-b94c61b6668f", "TtdWSbdgOu00");
 	    try {
 	    	options = new RecognizeOptions.Builder()
 				.model("ja-JP_BroadbandModel")
@@ -25,6 +25,7 @@ public class SpeechtoText_lib {
 	    	// TODO 自動生成された catch ブロック
 	    	e.printStackTrace();
 	    }
+
     }
     public SpeechRecognitionResults getTranscript() {
 		SpeechRecognitionResults transcript = service.recognize(options).execute();

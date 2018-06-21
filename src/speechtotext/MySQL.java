@@ -18,10 +18,10 @@ Map<String, Object> lng = new HashMap<>();
 public MySQL() {
 	this.driver = "org.gjt.mm.mysql.Driver";
     this.server = "sangi2018.sist.ac.jp";
-    this.dbname = "sangi2018";
+    this.dbname = "j16013";
     this.url = "jdbc:mysql://" + server + "/" + dbname + "?useUnicode=true&characterEncoding=UTF-8";
-    this.user = "sangi2018";
-    this.password = "sistsangi2018";
+    this.user = "j16013";
+    this.password = "sistj16013";
     try {
         this.con = DriverManager.getConnection(url, user, password);
         this.stmt = con.createStatement ();
@@ -51,7 +51,7 @@ public ResultSet getID() {
 public void updateImage(String transcript, double confidence) {
 	//keywordテーブルへ格納
 	StringBuffer buf = new StringBuffer();
-	buf.append("INSERT INTO  `speeches` (`user_id`,`transcript` ,`confidence`) VALUES ( 'J16013', " + transcript + ", "+ confidence +"  );");
+	buf.append("INSERT INTO  `speeches` (`transcript` ,`confidence`) VALUES (  " + transcript + ", "+ confidence +"  );");
 	String sql = buf.toString();
 	try {
 		stmt.execute (sql);
